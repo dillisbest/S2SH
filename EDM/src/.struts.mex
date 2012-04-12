@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="struts_test_one" location="50,50" size="170,71">
+    <action name="hello" location="10,20" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="hello.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="struts_test_one" location="50,50" size="170,71">
+    <action name="welcome" location="10,20" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="welcome.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="global" location="50,200" size="170,71">
+    <action name="*" location="10,20" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="fail.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="hello.jsp" path="/hello.jsp" location="350,200" size="150,55" />
+  <webResource name="welcome.jsp" path="/welcome.jsp" location="500,200" size="150,55" />
+  <webResource name="fail.jsp" path="/fail.jsp" location="50,350" size="150,55" />
+</Struts2Diagram>
+
