@@ -1,4 +1,4 @@
-package org.edm;
+package org.dusong.edm.dao;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

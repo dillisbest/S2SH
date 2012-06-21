@@ -3,6 +3,7 @@
 <body>
 <center>
 	<div style="width:60% ;border:2px solid silver;background-color:silver;" >
+	<a style="float:right;" href="register.jsp">Register&nbsp;</a>
 	<s:form action="toLogin" method="POST">
 <h1>LOGIN</h1><br>
 		<s:actionerror />

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="EDM"
+  name="SSHTest"
   id="myeclipse.1334214786093"
   context-root="/EDM"
   j2ee-spec="5.0"
-  archive="EDM.war">
+  archive="SSHTest.war">
   <attributes>
     <attribute name="webrootdir" value="/WebRoot" />
   </attributes>

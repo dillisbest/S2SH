@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans
-	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+	default-lazy-init="true">
 
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-		<property name="configLocation"
-			value="classpath:hibernate.cfg.xml">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml">
 		</property>
-	</bean></beans>
+	</bean>
+	<!-- Dao -->
+	<bean id="UserDAO" class="org.dusong.edm.dao.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="RoleDAO" class="org.dusong.edm.dao.RoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="DepartmentDAO" class="org.dusong.edm.dao.DepartmentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- Service -->
+	<bean name="UserService" class="org.dusong.edm.service.UserService">
+		<property name="userDao">
+			<ref bean="UserDAO" />
+		</property>
+	</bean>
+	<bean name="DepartmentService" class="org.dusong.edm.service.DepartmentService">
+		<property name="departmentDao">
+			<ref bean="DepartmentDAO" />
+		</property>
+	</bean>
+	<!-- Action -->
+	<bean name="UserAction" class="org.dusong.edm.action.UserAction">
+		<property name="userService">
+			<ref bean="UserService" />
+		</property>
+		<property name="departmentService">
+			<ref bean="DepartmentService" />
+		</property>
+	</bean>
+	<bean name="DepartmentAction" class="org.dusong.edm.action.DepartmentAction">
+		<property name="departmentService">
+			<ref bean="DepartmentService" />
+		</property>
+	</bean>
+</beans>

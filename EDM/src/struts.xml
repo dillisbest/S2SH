@@ -1,23 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-	<!-- 处在开发模式下，可以修改xml文件，而不用重新部署 -->
-	<constant name="struts.devMode" value="true" />
-
-	<!--
-		Sturts2中的package用来区分同名的action，与Java的package类似 在开发当中一般用模块名来命名namespace。
-		namespace=""，那么访问该应用下的任何welcome.action，都可以处理
-	-->
-	<package name="struts_test_one" namespace="/" extends="struts-default">
-		<action name="hello">
+	<package name="struts2" extends="struts-default">
 			<!-- 默认result的name属性就是success，就是默认不用写 -->
-			<result>
-				/hello.jsp
-			</result>
+		<action name="toRegister" class="UserAction" method="toAdd">
+			<result name="success">/admin/welcome.jsp</result>
+			<result name="fail">/admin/loginFail.jsp</result>
 		</action>
-		<action name="doLogin" class="org.edm.action.LoginAction" method="toLogin">
-			<result name="success">/welcome.jsp</result>
-			<result name="fail">/fail.jsp</result>
+		<action name="toLogin" class="UserAction" method="toLogin">
+			<result name="success">/admin/welcome.jsp</result>
+			<result name="fail">/admin/loginFail.jsp</result>
+		</action>
+		<action name="addUser" class="UserAction">
+			<result name="success" type="redirect">/admin/manageUser</result>
+			<result name="fail">/admin/fail.jsp</result>
+		</action>
+		<action name="delUser" class="UserAction" method="toDel">
+			<result name="success" type="redirect">/admin/manageUser</result>
+			<result name="fail">/admin/fail.jsp</result>
+		</action>
+		<action name="lookUser" class="UserAction" method="toLook">
+			<result name="success" type="redirect">/admin/manageUser</result>
+			<result name="fail">/admin/fail.jsp</result>
+		</action>
+		<action name="queryUsers" class="UserAction">
+			<result name="success">/admin/userManage.jsp</result>
+			<result name="fail">/admin/userManage.jsp</result>
+		</action>
+		<action name="manageUser" class="UserAction" method="toGetAll">
+			<result name="success">/admin/userManage.jsp</result>
+			<result name="fail">/admin/userManage.jsp</result>
+		</action>
+		
+		<!-- Department -->
+		<action name="addDepartment" class="DepartmentAction">
+			<result name="success" type="redirect">/admin/manageDepartment</result>
+			<result name="fail">/admin/fail.jsp</result>
+		</action>
+		<action name="delDepartment" class="DepartmentAction" method="toDel">
+			<result name="success" type="redirect">/admin/manageDepartment</result>
+			<result name="fail">/admin/fail.jsp</result>
+		</action>
+		<action name="lookDepartment" class="DepartmentAction" method="toLook">
+			<result name="success" type="redirect">/admin/manageDepartment</result>
+			<result name="fail">/admin/fail.jsp</result>
+		</action>
+		<action name="queryDepartments" class="DepartmentAction">
+			<result name="success">/admin/departmentManage.jsp</result>
+			<result name="fail">/admin/departmentManage.jsp</result>
+		</action>
+		<action name="manageDepartment" class="DepartmentAction" method="toGetAll">
+			<result name="success">/admin/departmentManage.jsp</result>
+			<result name="fail">/admin/departmentManage.jsp</result>
 		</action>
 	</package>
 </struts>    
